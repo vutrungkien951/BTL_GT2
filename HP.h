@@ -32,15 +32,34 @@ void ThemHP(HocPhan hp, Node_HP *first_HP)
 	}
 }
 
+HocPhan timHPBangMaHP(string maHP, Node_HP *first_HP){
+	Node_HP *p = first_HP;
+	HocPhan hp;
+	if(p == NULL){
+		return hp;
+	}
+	else{
+		while(p != NULL){
+			if(p->info.maHP == maHP){
+				return p->info;
+			}
+			p = p->link;
+		}
+		return hp;
+	}
+}
+void xuatHP(HocPhan hp){
+	cout << "Ma hoc phan: " << hp.maHP << endl << 
+	"Ten hoc phan: " << hp.tenHP << endl << 
+	"Ngay bat dau: " << hp.ngayBD << endl <<
+	"Ngay ket thuc: " << hp.ngayKT << endl;
+}
 void XuatDSHP(Node_HP *first_HP)
 {
 	Node_HP* p = first_HP;
 	while (p != NULL)
 	{
-		cout << "Ma hoc phan:" << p->info.maHP << endl
-			<< "Ten hoc phan:" << p->info.tenHP << endl
-			<< "Ngay bat dau:" << p->info.ngayBD << endl
-			<< "Ngay ket thuc:" << p->info.ngayKT << endl;
+		xuatHP(p->info);
 		p = p->link;
 	}
 }

@@ -31,15 +31,18 @@ void ThemSV(SinhVien sv, Node_SV *first_SV)
 		first_SV = p;
 	}
 }
+void xuatSV(SinhVien sv){
+	cout << "Ma sinh vien: " << sv.maSV << endl <<
+	"Ho ten sinh vien: " << sv.holot << " " << sv.ten << endl <<
+	"Ngay sinh: " << sv.ngaysinh << "/" << sv.thangsinh << "/" << sv.namsinh << endl << 
+	"So dien thoai: " << sv.sodienthoai << endl;
+}
 void XuatDSSV(Node_SV *first_SV)
 {
 	Node_SV* p = first_SV;
 	while (p != NULL)
 	{
-		cout << "Ma sinh vien:" << p->info.maSV << endl
-			<< "Ho ten sinh vien:" << p->info.holot << " " << p->info.ten << endl
-			<< "Nam sinh:" << p->info.ngaysinh << "/" << p->info.thangsinh << "/" << p->info.namsinh << endl
-			<< "So dien thoai:" << p->info.sodienthoai << endl;
+		xuatSV(p->info);
 		p = p->link;
 	}
 }

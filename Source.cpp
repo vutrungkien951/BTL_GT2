@@ -43,7 +43,10 @@ int main()
 	init();
 	// 6
 	SinhVien sv = timSinhVienTheoMa(maSVDiemCaoNhatToanHP(first_KQ) , first_SV);
+	xuatSV(sv);
 	// 7
+	HocPhan hp = timHPBangMaHP(layMaHPTuDeTai(timDeTaiBangMaDT(maDeTaiSVDiemCaoNhatToanHP(first_KQ), first_DT)) , first_HP);
+	xuatHP(hp);
 	
 	return 0;
 }

@@ -31,20 +31,40 @@ void ThemDT(DeTai dt, Node_DT *first_DT)
 	}
 }
 
+void xuatDT(DeTai dt){
+	cout << "Ma de tai: " << dt.maDT << endl << 
+	"Ten de tai: " << dt.tenDT << endl << 
+	"So luong sv tham gia: " << dt.soluongSV << endl <<
+	"Ma hoc phan: " << dt.maHP << endl;
+}
+
 void XuatDSDT(Node_DT *first_DT)
 {
 	Node_DT* p = first_DT;
 	while (p != NULL)
 	{
-		cout << "Ma de tai:" << p->info.maDT << endl
-			<< "Ten de tai:" << p->info.tenDT << endl
-			<< "So luong sinh vien tham gia:" << p->info.soluongSV << endl
-			<< "Ma hoc phan:" << p->info.maHP << endl;
+		xuatDT(p->info);
 		p = p->link;
 	}
 }
 
 DeTai timDeTaiBangMaDT(string maDT, Node_DT *first_DT){
 	Node_DT *p = first_DT;
-	
+	DeTai dt;
+	if(first_DT == NULL){
+		return dt;
+	}
+	else{
+		while(p != NULL){
+			if(p->info.maDT == maDT){
+				return p->info;
+			}
+			p = p->link;
+		}
+		return dt;
+	}
+}
+
+string layMaHPTuDeTai(DeTai dt){
+	return dt.maHP;
 }
