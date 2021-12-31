@@ -17,7 +17,7 @@ struct Node_DT
 	Node_DT* link;
 };
 
-void ThemDT(DeTai dt, Node_DT *first_DT)
+void ThemDT(DeTai dt, Node_DT *&first_DT)
 {
 	Node_DT* p = new Node_DT;
 	p->info = dt;

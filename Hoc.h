@@ -18,6 +18,19 @@ struct Node_H
 	Node_H* link;
 };
 
+void themHoc(Hoc h, Node_H *first_H){
+	Node_H *p = new Node_H;
+	p->info = h;
+	p->link = NULL;
+	if(first_H == NULL){
+		first_H = p;
+	}
+	else{
+		p->link = first_H;
+		first_H = p;
+	}
+}
+
 void XuatDSH(Node_H *first_H)
 {
 	Node_H* p = first_H;

@@ -18,7 +18,7 @@ struct Node_HP
 	Node_HP* link;
 };
 
-void ThemHP(HocPhan hp, Node_HP *first_HP)
+void ThemHP(HocPhan hp, Node_HP *&first_HP)
 {
 	Node_HP* p = new Node_HP;
 	p->info = hp;

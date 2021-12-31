@@ -18,7 +18,7 @@ struct Node_KQ
 	Node_KQ* link;
 };
 
-void ThemKQ(KetQua kq, Node_KQ *first_KQ)
+void ThemKQ(KetQua kq, Node_KQ *&first_KQ)
 {
 	Node_KQ* p = new Node_KQ;
 	p->info = kq;

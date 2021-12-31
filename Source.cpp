@@ -41,12 +41,19 @@ int main()
 	//Tim sv co diem tong ket cao nhat
 	//Khoi tao
 	init();
+	/*
 	// 6
 	SinhVien sv = timSinhVienTheoMa(maSVDiemCaoNhatToanHP(first_KQ) , first_SV);
 	xuatSV(sv);
 	// 7
 	HocPhan hp = timHPBangMaHP(layMaHPTuDeTai(timDeTaiBangMaDT(maDeTaiSVDiemCaoNhatToanHP(first_KQ), first_DT)) , first_HP);
 	xuatHP(hp);
+	*/
+	SinhVien sv1;
+	nhapSV(sv1);
+	Stack stack;
+	initStack(stack);
+	push(sv1, stack);
 	
 	return 0;
 }

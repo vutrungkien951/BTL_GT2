@@ -18,7 +18,27 @@ struct Node_SV
 	SinhVien info;
 	Node_SV* link;
 };
-void ThemSV(SinhVien sv, Node_SV *first_SV)
+
+void nhapSV(SinhVien &sv){
+	cout << "Nhap vao cac thong tin" << endl <<
+	"Ma SV: ";
+	getline(cin, sv.maSV);
+	cout << "Ho: ";
+	getline(cin, sv.holot);
+	cout << "Ten: ";
+	getline(cin, sv.ten);
+	cout << "Ngay sinh: ";
+	cin >> sv.ngaysinh;
+	cout << "Thang sinh: ";
+	cin >> sv.thangsinh;
+	cout << "Nam sinh: ";
+	cin >> sv.namsinh;
+	cin.ignore(1);
+	cout << "SDT: ";
+	getline(cin, sv.sodienthoai);
+}
+
+void ThemSV(SinhVien sv, Node_SV *&first_SV)
 {
 	Node_SV* p = new Node_SV;
 	p->info = sv;
@@ -31,6 +51,12 @@ void ThemSV(SinhVien sv, Node_SV *first_SV)
 		first_SV = p;
 	}
 }
+
+Node_SV *layNodeSVDau(Node_SV *&first_SV){
+	Node_SV *p = new Node_SV;
+
+}
+
 void xuatSV(SinhVien sv){
 	cout << "Ma sinh vien: " << sv.maSV << endl <<
 	"Ho ten sinh vien: " << sv.holot << " " << sv.ten << endl <<
@@ -63,3 +89,68 @@ SinhVien timSinhVienTheoMa(string maSV, Node_SV *first_SV){
 	}
 	return sv;
 }
+
+
+// stack sv
+struct Node{
+	SinhVien sv;
+	Node *link;
+};
+
+struct Stack{
+	Node *head;
+};
+void initStack(Stack &stack){
+	stack.head = NULL;
+}
+bool isEmpty(Stack stack){
+	return (stack.head == NULL);
+}
+Node *createNode(SinhVien sv){
+	Node *p = new Node;
+	if(p == NULL){
+		return NULL;
+	}
+	p->sv = sv;
+	p->link = NULL;
+
+	return p;
+}
+
+int demSoPhanTuTrongStack(Stack stack){
+	int i = 0;
+	Node *p = stack.head;
+	while(p != NULL){
+		i++;
+		p = p->link;
+	}
+	return i;
+}
+
+void push(SinhVien sv, Stack &stack){
+	Node *p = createNode(sv);
+
+	p->link = stack.head;
+	stack.head = p;
+}
+
+Node *pop(Stack &stack){
+	if(stack.head == NULL){
+		return NULL;
+	}
+	else{
+		Node *p = stack.head;
+		stack.head = p->link;
+		p->link = NULL;
+		return p;
+	}
+}
+
+void xuatStack(Stack stack){
+	Node *p = stack.head;
+	while(p != NULL){
+		xuatSV(p->sv);
+		p = p->link;
+	}
+}
+
