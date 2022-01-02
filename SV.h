@@ -52,9 +52,34 @@ void ThemSV(SinhVien sv, Node_SV *&first_SV)
 	}
 }
 
-Node_SV *layNodeSVDau(Node_SV *&first_SV){
-	Node_SV *p = new Node_SV;
+void ThemCuoiSV(SinhVien sv, Node_SV *&first_SV){
+	Node_SV* p = new Node_SV;
+	p->info = sv;
+	p->link = NULL;
+	if(first_SV == NULL){
+		first_SV = p;
+	}
+	else{
+		Node_SV *q = first_SV;
 
+		while(q->link != NULL){
+			q = q->link;
+		}
+
+		q->link = p; 
+	}
+}
+
+SinhVien laySVDau(Node_SV *&first_SV){
+	Node_SV *p = first_SV;
+	Node_SV *q = first_SV->link;
+
+	first_SV = q;
+	SinhVien sv = p->info;
+
+	delete p;
+
+	return sv;
 }
 
 void xuatSV(SinhVien sv){
@@ -104,7 +129,7 @@ void initStack(Stack &stack){
 	stack.head = NULL;
 }
 bool isEmpty(Stack stack){
-	return (stack.head == NULL);
+	return stack.head == NULL;
 }
 Node *createNode(SinhVien sv){
 	Node *p = new Node;
@@ -134,16 +159,16 @@ void push(SinhVien sv, Stack &stack){
 	stack.head = p;
 }
 
-Node *pop(Stack &stack){
-	if(stack.head == NULL){
-		return NULL;
-	}
-	else{
+SinhVien pop(Stack &stack){
+	SinhVien sv;
+	if(stack.head != NULL){
 		Node *p = stack.head;
 		stack.head = p->link;
-		p->link = NULL;
-		return p;
+		
+		sv = p->sv;
+		delete p;
 	}
+	return sv;
 }
 
 void xuatStack(Stack stack){
@@ -151,6 +176,18 @@ void xuatStack(Stack stack){
 	while(p != NULL){
 		xuatSV(p->sv);
 		p = p->link;
+	}
+}
+
+void reverseSV(Node_SV *&first_SV, Stack &stack){
+	initStack(stack);
+
+	while(first_SV != NULL){
+		push(laySVDau(first_SV), stack);
+	}
+
+	while(!isEmpty(stack)){
+		ThemCuoiSV(pop(stack), first_SV);
 	}
 }
 

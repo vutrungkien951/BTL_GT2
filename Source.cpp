@@ -29,6 +29,8 @@ Node_HP *first_HP;
 Node_DT *first_DT;
 Node_KQ *first_KQ;
 Node_H *first_H;
+
+Stack stack;
 void init(){
 	Node_SV *first_SV = new Node_SV;
 	Node_HP *first_HP = new Node_HP;
@@ -48,12 +50,23 @@ int main()
 	// 7
 	HocPhan hp = timHPBangMaHP(layMaHPTuDeTai(timDeTaiBangMaDT(maDeTaiSVDiemCaoNhatToanHP(first_KQ), first_DT)) , first_HP);
 	xuatHP(hp);
-	*/
+	
+	//8
+
 	SinhVien sv1;
 	nhapSV(sv1);
-	Stack stack;
+	SinhVien sv2;
+	nhapSV(sv2);
+	
+	ThemSV(sv1, first_SV);
+	ThemSV(sv2, first_SV);
+	XuatDSSV(first_SV);
+
 	initStack(stack);
-	push(sv1, stack);
+	reverseSV(first_SV, stack);
+
+	XuatDSSV(first_SV);
+	*/
 	
 	return 0;
 }
