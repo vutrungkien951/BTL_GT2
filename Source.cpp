@@ -67,6 +67,24 @@ int main()
 
 	XuatDSSV(first_SV);
 	*/
-	
+	//9
+	/*
+	DeTai dt1, dt2;
+
+	nhapDT(dt1);
+	ThemDT(dt1, first_DT);
+	nhapDT(dt2);
+	ThemDT(dt2, first_DT);
+
+	Node_DT *dsDeTai = NULL;
+	Node_DT *sortedDeTai = NULL;
+
+	layDeTaiTu3Nguoi(first_DT, dsDeTai);
+	countingSortDeTaiGiamDan(dsDeTai, sortedDeTai, 3);
+	cout << "Sau khi sap xep: " << endl;
+
+	XuatDSDT(sortedDeTai);
+	*/
+
 	return 0;
 }

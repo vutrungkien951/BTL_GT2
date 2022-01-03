@@ -17,6 +17,19 @@ struct Node_DT
 	Node_DT* link;
 };
 
+void nhapDT(DeTai &dt){
+	cout << "Nhap thong tin de tai: " << endl;
+	cout << "Nhap ma de tai: ";
+	getline(cin, dt.tenDT);
+	cout << "Nhap ten de tai: ";
+	getline(cin, dt.maDT);
+	cout << "Nhap so luong sv: ";
+	cin >> dt.soluongSV;
+	cin.ignore(1);
+	cout << "Nhap ma hoc phan: ";
+	getline(cin, dt.maHP);
+}
+
 void ThemDT(DeTai dt, Node_DT *&first_DT)
 {
 	Node_DT* p = new Node_DT;
@@ -67,4 +80,42 @@ DeTai timDeTaiBangMaDT(string maDT, Node_DT *first_DT){
 
 string layMaHPTuDeTai(DeTai dt){
 	return dt.maHP;
+}
+
+void layDeTaiTu3Nguoi(Node_DT *first_DT, Node_DT *&dsDeTai){
+	//dsDeTai phai rong de chua de tai
+	Node_DT *p = first_DT;
+	while(p != NULL){
+		if(p->info.soluongSV <= 3){
+			ThemDT(p->info, dsDeTai);
+		}
+		p = p->link;
+	}
+}
+
+void countingSortDeTaiGiamDan(Node_DT *dsDeTai, Node_DT *&sortedList, int k){
+	//k = 3 , sort theo nho hon hoac bang 3
+	//sortedList phai rong
+	int c[k];
+	for(int i = 0; i <= k; i++){
+		c[i] = 0;
+	}
+
+	Node_DT *p = dsDeTai;
+	while(p != NULL){
+		c[p->info.soluongSV]++;
+		p = p->link;
+	}
+
+	// 0 1 2 3
+	for(int i = 0; i <= k; i++){
+		p = dsDeTai;
+		while(c[i] > 0){
+			if(p->info.soluongSV == i){
+				ThemDT(p->info, sortedList);
+				c[i]--;
+			}
+			p = p->link;
+		}
+	}
 }
