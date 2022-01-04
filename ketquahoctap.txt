@@ -1,0 +1,2 @@
+hp1	hocphan1
+Ma sinh vien: sv1	Ho ten: Vu Trung Kien	Diem: 9

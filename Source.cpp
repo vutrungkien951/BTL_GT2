@@ -40,10 +40,33 @@ void init(){
 }
 int main()
 {
+	/*
 	//Tim sv co diem tong ket cao nhat
 	//Khoi tao
 	init();
-	/*
+	//setup du lieu
+	string maHP = "hp1";
+	KetQua kq;
+	kq.maSV = "sv1";
+	kq.maDT = "dt1";
+	kq.diemBC = kq.diemCD = kq.diemTB = 9.0;
+	ThemKQ(kq, first_KQ);
+	SinhVien sv1;
+	sv1.maSV = "sv1";
+	sv1.holot = "Vu";
+	sv1.ten = "Trung Kien";
+	ThemSV(sv1, first_SV);
+	DeTai dt1;
+	dt1.maDT = "dt1";
+	dt1.maHP = "hp1";
+	dt1.tenDT = "detai1";
+	dt1.soluongSV = 1;
+	ThemDT(dt1, first_DT);
+	HocPhan hp1;
+	hp1.maHP = "hp1";
+	hp1.tenHP = "hocphan1";
+	ThemHP(hp1, first_HP);
+
 	// 6
 	SinhVien sv = timSinhVienTheoMa(maSVDiemCaoNhatToanHP(first_KQ) , first_SV);
 	xuatSV(sv);
@@ -84,7 +107,31 @@ int main()
 	cout << "Sau khi sap xep: " << endl;
 
 	XuatDSDT(sortedDeTai);
-	*/
+	
+	//10
+	string maHP = "hp1";
+	KetQua kq;
+	kq.maSV = "sv1";
+	kq.maDT = "dt1";
+	kq.diemBC = kq.diemCD = kq.diemTB = 9.0;
+	ThemKQ(kq, first_KQ);
+	SinhVien sv1;
+	sv1.maSV = "sv1";
+	sv1.holot = "Vu";
+	sv1.ten = "Trung Kien";
+	ThemSV(sv1, first_SV);
+	DeTai dt1;
+	dt1.maDT = "dt1";
+	dt1.maHP = "hp1";
+	dt1.tenDT = "detai1";
+	dt1.soluongSV = 1;
+	ThemDT(dt1, first_DT);
+	HocPhan hp1;
+	hp1.maHP = "hp1";
+	hp1.tenHP = "hocphan1";
+	ThemHP(hp1, first_HP);
 
+	inBangDiemKhiBietMaHP(maHP, first_KQ, first_HP, first_DT, first_SV);
+	*/
 	return 0;
 }

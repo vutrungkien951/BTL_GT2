@@ -81,6 +81,15 @@ SinhVien laySVDau(Node_SV *&first_SV){
 
 	return sv;
 }
+string strSVTheoTask10(SinhVien sv){
+	string str = "Ma sinh vien: " + sv.maSV + "\tHo ten: " + sv.holot + " " +
+	sv.ten + "\t";
+	return str; 
+}
+void xuatSVTheoTask10(SinhVien sv){
+	cout << "Ma sinh vien: "<< sv.maSV << "\t" << "Ho ten: " << sv.holot << " " << sv.ten << 
+	"\t";
+}
 
 void xuatSV(SinhVien sv){
 	cout << "Ma sinh vien: " << sv.maSV << endl <<

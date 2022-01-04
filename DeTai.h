@@ -30,6 +30,24 @@ void nhapDT(DeTai &dt){
 	getline(cin, dt.maHP);
 }
 
+bool deTaiRong(DeTai dt){
+	return dt.maDT == "";
+}
+
+DeTai layDeTaiTuMaDT(string maDT, Node_DT *first_DT){
+	Node_DT *p = first_DT;
+	DeTai dt;
+
+	while(p != NULL){
+		if(p->info.maDT == maDT){
+			return p->info;
+		}
+		p = p->link;
+	}
+	
+	return dt;
+}
+
 void ThemDT(DeTai dt, Node_DT *&first_DT)
 {
 	Node_DT* p = new Node_DT;

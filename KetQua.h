@@ -46,7 +46,7 @@ void XuatDSKQ(Node_KQ *first_KQ)
 	}
 }
 
-// 6
+
 string maSVDiemCaoNhatToanHP(Node_KQ *first_KQ){
 	Node_KQ *p = first_KQ;
 	
@@ -69,6 +69,11 @@ string maSVDiemCaoNhatToanHP(Node_KQ *first_KQ){
 		return maSV;
 	}
 }
+
+double tinhDiemTong(KetQua kq){
+	return (kq.diemBC * 0.4 + kq.diemTB * 0.2 + kq.diemCD * 0.4);
+}
+
 string maDeTaiSVDiemCaoNhatToanHP(Node_KQ *first_KQ){
 	Node_KQ *p = first_KQ;
 	
@@ -90,4 +95,36 @@ string maDeTaiSVDiemCaoNhatToanHP(Node_KQ *first_KQ){
 		}
 		return maDeTai;
 	}
+}
+
+bool ketQuaThuocHP(string maHP, KetQua ketQua, Node_DT *first_DT){
+	string maHPLayDuoc = layMaHPTuDeTai(layDeTaiTuMaDT(ketQua.maDT, first_DT));
+	if(maHPLayDuoc == maHP){
+		return true;
+	}
+	return false;
+}
+
+
+void inBangDiemKhiBietMaHP(string maHP, Node_KQ *first_KQ, Node_HP *first_HP, Node_DT *first_DT, Node_SV *first_SV){
+	//file name mac dinh ketquahoctap.txt
+	Node_KQ *p = first_KQ;
+	HocPhan hp = timHPBangMaHP(maHP, first_HP);
+	ofstream myFile;
+	myFile.open("ketquahoctap.txt");
+
+	cout << hp.maHP << "\t" << hp.tenHP << endl;
+	myFile << hp.maHP << "\t" << hp.tenHP << "\n";
+
+	while(p != NULL){
+		if(ketQuaThuocHP(maHP, p->info, first_DT)){
+			xuatSVTheoTask10(timSinhVienTheoMa(p->info.maSV, first_SV));
+			myFile << strSVTheoTask10(timSinhVienTheoMa(p->info.maSV, first_SV));
+			cout << "Diem: " << tinhDiemTong(p->info) << endl;
+			myFile << "Diem: " << tinhDiemTong(p->info) << "\n";
+		}
+		p = p->link;
+	}
+
+	myFile.close();
 }
