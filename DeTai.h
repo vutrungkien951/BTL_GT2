@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -29,6 +30,41 @@ void nhapDT(DeTai &dt){
 	cout << "Nhap ma hoc phan: ";
 	getline(cin, dt.maHP);
 }
+void ThemDT(DeTai dt, Node_DT *&first_DT)
+{
+	Node_DT* p = new Node_DT;
+	p->info = dt;
+	p->link = NULL;
+	if (first_DT == NULL)
+		first_DT = p;
+	else
+	{
+		p->link = first_DT;
+		first_DT = p;
+	}
+}
+
+void insertFromFile_DT(Node_DT *&first_DT)
+{
+	DeTai dt;
+	ifstream inF;
+	inF.open("DeTai.txt");
+	if (inF.is_open())
+	{
+		while (!inF.eof())
+		{
+			getline(inF, dt.maDT, ',');
+			getline(inF, dt.tenDT, ',');
+			inF >> dt.soluongSV;
+			inF.ignore();
+			getline(inF, dt.maHP);
+			ThemDT(dt, first_DT);
+		}
+		inF.close();
+	}
+	else
+		cout << "Ko doc dc file";
+}
 
 bool deTaiRong(DeTai dt){
 	return dt.maDT == "";
@@ -48,19 +84,7 @@ DeTai layDeTaiTuMaDT(string maDT, Node_DT *first_DT){
 	return dt;
 }
 
-void ThemDT(DeTai dt, Node_DT *&first_DT)
-{
-	Node_DT* p = new Node_DT;
-	p->info = dt;
-	p->link = NULL;
-	if (first_DT == NULL)
-		first_DT = p;
-	else
-	{
-		p->link = first_DT;
-		first_DT = p;
-	}
-}
+
 
 void xuatDT(DeTai dt){
 	cout << "Ma de tai: " << dt.maDT << endl << 

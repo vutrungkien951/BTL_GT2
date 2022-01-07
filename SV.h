@@ -70,6 +70,34 @@ void ThemCuoiSV(SinhVien sv, Node_SV *&first_SV){
 	}
 }
 
+void insertFromFile_SV(Node_SV *&first_SV)
+{
+	SinhVien sv;
+	ifstream inF;
+	inF.open("SinhVien.txt");
+	if (inF.is_open())
+	{
+		while (!inF.eof())
+		{
+			getline(inF, sv.maSV);
+        	getline(inF, sv.holot);
+        	getline(inF, sv.ten);
+        	inF >> sv.ngaysinh;
+			inF.ignore();
+			inF >> sv.thangsinh;
+			inF.ignore();
+			inF >> sv.namsinh;
+			inF.ignore();
+			inF >> sv.sodienthoai;
+			inF.ignore();
+			ThemSV(sv, first_SV);
+		}
+		inF.close();
+	}
+	else
+		cout << "Ko doc dc file!";
+}
+
 SinhVien laySVDau(Node_SV *&first_SV){
 	Node_SV *p = first_SV;
 	Node_SV *q = first_SV->link;
@@ -199,4 +227,6 @@ void reverseSV(Node_SV *&first_SV, Stack &stack){
 		ThemCuoiSV(pop(stack), first_SV);
 	}
 }
+
+
 

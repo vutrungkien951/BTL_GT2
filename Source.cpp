@@ -56,36 +56,15 @@ void init(){
 	Node_DT *dsDeTai = NULL;
 	Node_DT *sortedDeTai = NULL;
 }
+
+
 int main()
 {
 	
 	//Tim sv co diem tong ket cao nhat
 	//Khoi tao
 	init();
-	//setup du lieu
-	/*
-	string maHP = "hp1";
-	KetQua kq;
-	kq.maSV = "sv1";
-	kq.maDT = "dt1";
-	kq.diemBC = kq.diemCD = kq.diemTB = 9.0;
-	ThemKQ(kq, first_KQ);
-	SinhVien sv1;
-	sv1.maSV = "sv1";
-	sv1.holot = "Vu";
-	sv1.ten = "Trung Kien";
-	ThemSV(sv1, first_SV);
-	DeTai dt1;
-	dt1.maDT = "dt1";
-	dt1.maHP = "hp1";
-	dt1.tenDT = "detai1";
-	dt1.soluongSV = 1;
-	ThemDT(dt1, first_DT);
-	HocPhan hp1;
-	hp1.maHP = "hp1";
-	hp1.tenHP = "hocphan1";
-	ThemHP(hp1, first_HP);
-	*/
+	
 	int choice;
 	bool init = false;
 	DeTai dt;
@@ -107,10 +86,15 @@ int main()
 		"11. Thoat\n"<<
 		"Hay dua ra lua chon: ";
 		cin >> choice;
+		cin.ignore();
 		switch(choice){
 			case 1:
 				//docfile
 				init = true;
+				insertFromFile_DT(first_DT);
+				insertFromFile_HP(first_HP);
+				insertFromFile_SV(first_SV);
+				insertFromFile_KQ(first_KQ);
 				break;
 			case 2:
 				if(init){
@@ -123,7 +107,7 @@ int main()
 				break;
 			case 3:
 				if(init){
-
+					
 				}
 				else{
 					cout << "Chua co du lieu! Chon 1 de doc file!" << endl;
@@ -131,7 +115,10 @@ int main()
 				break;
 			case 4:
 				if(init){
-
+					string mssv;
+					cout << "Nhap ma so sinh vien can xem diem:";
+					cin >> mssv;
+					
 				}
 				else{
 					cout << "Chua co du lieu! Chon 1 de doc file!" << endl;
@@ -195,6 +182,7 @@ int main()
 				}
 				break;
 		}
+		_getch();
 	}while(choice >= 1 && choice <= 10);
 
 	return 0;

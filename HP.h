@@ -32,6 +32,27 @@ void ThemHP(HocPhan hp, Node_HP *&first_HP)
 	}
 }
 
+void insertFromFile_HP(Node_HP *&first_HP)
+{
+	HocPhan hp;
+	ifstream inF;
+	inF.open("HocPhan.txt");
+	if (inF.is_open())
+	{
+		while (!inF.eof())
+		{
+			getline(inF, hp.maHP);
+			getline(inF, hp.tenHP);
+			getline(inF, hp.ngayBD);
+        	getline(inF, hp.ngayKT);
+			ThemHP(hp, first_HP);
+		}
+		inF.close();
+	}
+	else
+		cout << "Ko doc dc file!";
+}
+
 HocPhan timHPBangMaHP(string maHP, Node_HP *first_HP){
 	Node_HP *p = first_HP;
 	HocPhan hp;

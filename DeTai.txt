@@ -1,0 +1,2 @@
+TS01,Quan ly sinh vien,4,MS01
+TK02,Quan ly nhan su,4,MK02

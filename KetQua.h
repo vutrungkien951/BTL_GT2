@@ -32,6 +32,31 @@ void ThemKQ(KetQua kq, Node_KQ *&first_KQ)
 	}
 }
 
+void insertFromFile_KQ(Node_KQ *&first_KQ)
+{
+	KetQua kq;
+	ifstream inF;
+	inF.open("KetQua.txt");
+	if (inF.is_open())
+	{
+		while (!inF.eof())
+		{
+			getline(inF, kq.maSV, ',');
+			getline(inF, kq.maDT, ',');
+			inF >> kq.diemBC;
+			inF.ignore();
+			inF >> kq.diemCD;
+			inF.ignore();
+			inF >> kq.diemTB;
+			inF.ignore();
+			ThemKQ(kq, first_KQ);
+		}
+		inF.close();
+	}
+	else
+		cout << "Ko doc dc file";
+}
+
 void XuatDSKQ(Node_KQ *first_KQ)
 {
 	Node_KQ* p = first_KQ;
