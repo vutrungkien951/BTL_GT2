@@ -228,5 +228,12 @@ void reverseSV(Node_SV *&first_SV, Stack &stack){
 	}
 }
 
+void menuTimKiemSV(){
+	cout << "Tim kiem sinh vien" << endl <<
+	"1. Tim kiem sinh vien theo ma" << endl <<
+	"2. Tim kiem sinh vien theo hoc phan" << endl <<
+	"3. Tim kiem sinh vien theo de tai" << endl <<
+	"Lua chon:";
+}
 
 

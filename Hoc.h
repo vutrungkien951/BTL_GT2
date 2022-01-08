@@ -11,7 +11,6 @@ struct Hoc
 	int thangdk;
 	int namdk;
 };
-
 struct Node_H
 {
 	Hoc info;

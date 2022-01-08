@@ -58,6 +58,7 @@ void init(){
 }
 
 
+
 int main()
 {
 	
@@ -107,7 +108,47 @@ int main()
 				break;
 			case 3:
 				if(init){
+					menuTimKiemSV();
+					int choice;
+					string temp;
 					
+					cin >> choice;
+					switch(choice){
+						case 1:
+						{
+							cout << "Moi ban nhap vao ma sv: ";
+							cin >> temp;
+							sv = timSinhVienTheoMa(temp, first_SV);
+						}
+							break;
+						case 2:
+						{
+							cout << "Moi ban nhap vao ma HP:";
+							cin >> temp;
+							Node_H *hocphan = first_H;
+							while(hocphan != NULL){
+								if(hocphan->info.maHP == temp){
+									xuatSV(timSinhVienTheoMa(hocphan->info.maSV, first_SV));
+								}
+								hocphan = hocphan->link;
+							}
+						}
+							break;
+						
+						case 3:
+						{
+							cout << "Moi ban nhap vao ma de tai: ";
+							cin >> temp;
+							Node_KQ *ketqua = first_KQ;
+							while(ketqua != NULL){
+								if(ketqua->info.maDT == temp){
+									xuatSV(timSinhVienTheoMa(ketqua->info.maSV, first_SV));
+								}
+								ketqua = ketqua->link;
+							}
+						}
+							break;
+					}
 				}
 				else{
 					cout << "Chua co du lieu! Chon 1 de doc file!" << endl;
@@ -118,7 +159,20 @@ int main()
 					string mssv;
 					cout << "Nhap ma so sinh vien can xem diem:";
 					cin >> mssv;
-					
+					Node_H *hoc = first_H;
+					Node_KQ *kq = first_KQ;
+					while(hoc != NULL){
+						if(hoc->info.maSV == mssv){
+							xuatHP(timHPBangMaHP(hoc->info.maHP, first_HP));
+							while(kq != NULL){
+								if(ketQuaThuocHP(hoc->info.maHP, kq->info, first_DT) && kq->info.maSV == mssv){
+									cout << "Diem: " << tinhDiemTong(kq->info);
+								}
+								kq = kq->link;
+							}
+						}
+						hoc = hoc->link;
+					}
 				}
 				else{
 					cout << "Chua co du lieu! Chon 1 de doc file!" << endl;
